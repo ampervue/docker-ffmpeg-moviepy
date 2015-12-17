@@ -222,6 +222,7 @@ RUN pip install -U scipy==$SCIPY_VERSION
 
 # Manually build version that allows control of FFMPEG exe
 # See https://github.com/Zulko/moviepy/issues/237
+WORKDIR /usr/local/src
 RUN git clone -q https://github.com/dkarchmer/moviepy.git
 WORKDIR /usr/local/src/moviepy
 RUN python setup.py install
