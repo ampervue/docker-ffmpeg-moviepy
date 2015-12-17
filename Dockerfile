@@ -24,8 +24,8 @@ ENV PYTHON_PIP_VERSION 7.1.2
 ENV YASM_VERSION    1.3.0
 ENV NUM_CORES 4
 
-ENV MOVIEPY_VERSION 0.2.2
-ENV NUMPY_VERSION 1.10
+ENV MOVIEPY_VERSION 0.2.2.11
+ENV NUMPY_VERSION 1.10.2
 ENV PILLOW_VERSION 3.0.0
 ENV SCIPY_VERSION 0.16.1
 
@@ -44,16 +44,21 @@ RUN echo deb http://archive.ubuntu.com/ubuntu precise universe multiverse >> /et
     checkinstall \
     cmake \
     default-jdk \
+    f2c \
+    gfortran \
     git \
     g++ \
     imagemagick \
     libass-dev \
+    libatlas-base-dev \
     libavcodec-dev \
     libavformat-dev \
+    libcnf-dev \
     libfaac-dev \
     libjpeg-dev \
     libjasper-dev \
     libgnutls-dev \
+    liblapack3 \
     libmp3lame-dev \
     libpq-dev \
     libpng-dev \
@@ -116,8 +121,22 @@ RUN git clone --depth 1 https://github.com/l-smash/l-smash \
     && git clone --depth 1 https://chromium.googlesource.com/webm/libvpx \
     && git clone --depth 1 git://git.opus-codec.org/opus.git \
     && git clone --depth 1 https://github.com/mulx/aacgain.git \
+    && git clone --depth 1 git://github.com/xianyi/OpenBLAS.git \
     && curl -Os http://www.tortall.net/projects/yasm/releases/yasm-${YASM_VERSION}.tar.gz \
     && tar xzvf yasm-${YASM_VERSION}.tar.gz
+          
+# Build OpenBLAS
+# =================================
+# From https://github.com/ogrisel/docker-openblas
+#ADD openblas.conf /etc/ld.so.conf.d/openblas.conf
+#WORKDIR /usr/local/src/OpenBLAS
+#RUN make  DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=${NUM_CORES} \
+#    && make install
+
+# Rebuild ld cache, this assumes that:
+# /etc/ld.so.conf.d/openblas.conf was installed by Dockerfile    
+#RUN ldconfig    
+# =================================          
 
 # Build YASM
 # =================================
@@ -214,8 +233,8 @@ RUN rm -rf /usr/local/src
 
 # Install moviepy and related packages
 # ====================================
-pip install -U numpy==$NUMPY_VERSION
-pip install -U Pillow==$PILLOW_VERSION
-pip install -U scipy==$SCIPY_VERSION
-pip install -U moviepy==$MOVIEPY_VERSION
+RUN pip install -U numpy==$NUMPY_VERSION
+RUN pip install -U Pillow==$PILLOW_VERSION
+RUN pip install -U scipy==$SCIPY_VERSION
+RUN pip install -U moviepy==$MOVIEPY_VERSION
 
