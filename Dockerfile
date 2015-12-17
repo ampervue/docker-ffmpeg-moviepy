@@ -30,6 +30,11 @@ ENV NUMPY_VERSION 1.10.2
 ENV PILLOW_VERSION 3.0.0
 ENV SCIPY_VERSION 0.16.1
 
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
+
 RUN apt-get -qq remove ffmpeg
 # remove several traces of python
 RUN apt-get purge -y python.*
@@ -222,16 +227,19 @@ RUN pip install -U scipy==$SCIPY_VERSION
 
 # Manually build version that allows control of FFMPEG exe
 # See https://github.com/Zulko/moviepy/issues/237
+# Use PIP when issue fixed. For now, change the defaults
+# manually
 WORKDIR /usr/local/src
-RUN git clone -q https://github.com/dkarchmer/moviepy.git
+RUN git clone -q https://github.com/Zulko/moviepy.git
 WORKDIR /usr/local/src/moviepy
-RUN python setup.py install
-ENV FFMPEG_BINARY auto-detect
+ADD config_defaults.py moviepy/config_defaults.py
+RUN sudo python setup.py install
 
-# Remove all tmpfile
+# Remove all tmpfile and cleanup
 # =================================
 WORKDIR /usr/local/
 RUN rm -rf /usr/local/src
+RUN apt-get autoremove -y; apt-get clean -y
 # =================================
 
 
