@@ -1,26 +1,26 @@
-FROM dkarchmervue/ffmpeg-moviepy
+FROM dkarchmervue/moviepy
 
 # https://github.com/ampervue/ffmpeg-moviepy
+# https://hub.docker.com/r/dkarchmervue/moviepy/
 
 MAINTAINER David Karchmer <dkarchmer@gmail.com>
 
 # ============================================================================
-# As an example, the python script uses moviepy to build a 2x2 mosaic
-# based on four videos
+# As an example, create a clip with a 'Hello World' title
 #
 # ~~~~
 # # Pull image
-# docker pull dkarchmervue/ffmpeg-moviepy
+# docker pull dkarchmervue/moviepy
 #
 # # Get example files and build new image
 # git clone https://github.com/ampervue/ffmpeg-moviepy
 # cd example
-# docker build -t mosaic .
+# docker build -t example .
 #
 # # Mount current directory on container so that file can be written back to host
 # # Assuming videos are on current directory
-# docker run --rm -ti -v ${PWD}:/code mosaic video1.mp4 video2.mp4 video3.mp4 video4.mp4
-# ls mosaic.mp4
+# docker run --rm -ti -v ${PWD}:/code example
+# ls hello_world.mp4
 # ~~~~
 # ============================================================================
 

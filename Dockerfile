@@ -1,6 +1,7 @@
 FROM ubuntu:trusty
 
 # https://github.com/ampervue/docker-ffmpeg-moviepy
+# https://hub.docker.com/r/dkarchmervue/moviepy/
 
 MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 
@@ -212,6 +213,19 @@ RUN ./configure --extra-libs="-ldl" \
     && make install
 # =================================
 
+# Install moviepy and related packages
+# ====================================
+RUN pip install -U numpy==$NUMPY_VERSION
+RUN pip install -U Pillow==$PILLOW_VERSION
+RUN pip install -U scipy==$SCIPY_VERSION
+#RUN pip install -U moviepy==$MOVIEPY_VERSION
+
+# Manually build version that allows control of FFMPEG exe
+# See https://github.com/Zulko/moviepy/issues/237
+RUN git clone -q https://github.com/dkarchmer/moviepy.git
+WORKDIR /usr/local/src/moviepy
+RUN python setup.py install
+ENV FFMPEG_BINARY auto-detect
 
 # Remove all tmpfile
 # =================================
@@ -219,10 +233,5 @@ WORKDIR /usr/local/
 RUN rm -rf /usr/local/src
 # =================================
 
-# Install moviepy and related packages
-# ====================================
-RUN pip install -U numpy==$NUMPY_VERSION
-RUN pip install -U Pillow==$PILLOW_VERSION
-RUN pip install -U scipy==$SCIPY_VERSION
-RUN pip install -U moviepy==$MOVIEPY_VERSION
+
 
