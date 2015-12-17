@@ -19,7 +19,9 @@ Source and example: https://github.com/ampervue/docker-ffmpeg-moviepy
 
 ~~~~
 docker pull dkarchmervue/moviepy
-docker run -ti dkarchmervue/moviepy
+docker run --rm -ti dkarchmervue/moviepy ffmpeg -version
+docker run --rm -ti -v ${PWD}:/work dkarchmervue/moviepy python your-moviepy-script.py
+docker run --rm -ti dkarchmervue/moviepy bash
 ~~~~
 
 ## Example
@@ -34,13 +36,10 @@ docker pull dkarchmervue/moviepy
 # Get example files and build new image
 git clone https://github.com/ampervue/docker-ffmpeg-moviepy
 cd example
-docker build -t example .
+docker build -t hello-world .
 
 # Mount current directory on container so that file can be written back to host
 # Assuming videos are on current directory
-docker run --rm -ti -v ${PWD}:/code example
+docker run --rm -ti -v ${PWD}:/code hello-world
 ls hello_world.mp4
-
-# To run with bash
-docker run --entrypoint bash -ti example
 ~~~~
