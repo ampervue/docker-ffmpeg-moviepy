@@ -124,19 +124,7 @@ RUN git clone --depth 1 https://github.com/l-smash/l-smash \
     && git clone --depth 1 git://github.com/xianyi/OpenBLAS.git \
     && curl -Os http://www.tortall.net/projects/yasm/releases/yasm-${YASM_VERSION}.tar.gz \
     && tar xzvf yasm-${YASM_VERSION}.tar.gz
-          
-# Build OpenBLAS
-# =================================
-# From https://github.com/ogrisel/docker-openblas
-#ADD openblas.conf /etc/ld.so.conf.d/openblas.conf
-#WORKDIR /usr/local/src/OpenBLAS
-#RUN make  DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=${NUM_CORES} \
-#    && make install
-
-# Rebuild ld cache, this assumes that:
-# /etc/ld.so.conf.d/openblas.conf was installed by Dockerfile    
-#RUN ldconfig    
-# =================================          
+                  
 
 # Build YASM
 # =================================

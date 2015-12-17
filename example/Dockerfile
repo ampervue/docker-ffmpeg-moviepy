@@ -1,4 +1,4 @@
-FROM dkarchmervue/python34-ffmpeg
+FROM dkarchmervue/ffmpeg-moviepy
 
 # https://github.com/ampervue/ffmpeg-moviepy
 
