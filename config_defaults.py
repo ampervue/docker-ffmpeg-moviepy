@@ -9,5 +9,5 @@ of convert and ffmpeg
 
 import os
 
-FFMPEG_BINARY = os.getenv('FFMPEG_BINARY', 'auto-detect')
-IMAGEMAGICK_BINARY = os.getenv('FFMPEG_BINARY', 'auto-detect')
+FFMPEG_BINARY = os.getenv('FFMPEG_BINARY', 'ffmpeg')
+IMAGEMAGICK_BINARY = os.getenv('IMAGEMAGICK_BINARY', 'convert')
