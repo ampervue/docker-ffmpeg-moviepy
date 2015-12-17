@@ -61,7 +61,7 @@ RUN echo deb http://archive.ubuntu.com/ubuntu precise universe multiverse >> /et
     libavformat-dev \
     libcnf-dev \
     libfaac-dev \
-    libfreeimage \
+    libfreeimage-dev \
     libjpeg-dev \
     libjasper-dev \
     libgnutls-dev \
