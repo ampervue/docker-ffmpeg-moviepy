@@ -246,5 +246,9 @@ RUN rm -rf /usr/local/src
 RUN apt-get autoremove -y; apt-get clean -y
 # =================================
 
-
+# Setup a working directory to allow for
+# docker run --rm -ti -v ${PWD}:/code ...
+# =======================================
+RUN mkdir /work
+WORKDIR /work
 
