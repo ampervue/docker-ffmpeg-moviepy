@@ -229,6 +229,7 @@ RUN pip install -U scipy==$SCIPY_VERSION
 # See https://github.com/Zulko/moviepy/issues/237
 # Use PIP when issue fixed. For now, change the defaults
 # manually
+RUN pip install tqdm
 WORKDIR /usr/local/src
 RUN git clone -q https://github.com/Zulko/moviepy.git
 WORKDIR /usr/local/src/moviepy
