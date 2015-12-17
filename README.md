@@ -1,7 +1,9 @@
-# docker-ffmpeg-moviepy
 
 A Docker image running Ubuntu:trusty with latest Python 3.5 and latest FFMPEG (built from source)
 Also installs moviepy and necessary packages (numpy, scipy, ImageMagick, etc.)
+
+For more on Moviepy, see http://zulko.github.io/moviepy/ 
+Many thanks to all the contributors of that great project.
 
 ### To Build
 
@@ -11,9 +13,9 @@ docker build -t <imageName> .
 
 ### To pull and run from hub.docker.com
 
-Docker Hub: https://registry.hub.docker.com/u/dkarchmervue/ffmpeg-moviepy/
+Docker Hub: https://registry.hub.docker.com/u/dkarchmervue/moviepy/
 
-Source and example: https://github.com/ampervue/ffmpeg-moviepy
+Source and example: https://github.com/ampervue/docker-ffmpeg-moviepy
 
 ~~~~
 docker pull dkarchmervue/moviepy
@@ -22,15 +24,15 @@ docker run -ti dkarchmervue/moviepy
 
 ## Example
 
-As an example, the python script uses FFMPEG to build a mosaic of
-four videos
+As an example, the python script demonstrates a
+Hello Work, creating a title slide for 10sec
 
 ~~~~
 # Pull image
-docker pull dkarchmervue/ffmpeg-moviepy
+docker pull dkarchmervue/moviepy
 
 # Get example files and build new image
-git clone https://github.com/ampervue/ffmpeg-moviepy
+git clone https://github.com/ampervue/docker-ffmpeg-moviepy
 cd example
 docker build -t example .
 

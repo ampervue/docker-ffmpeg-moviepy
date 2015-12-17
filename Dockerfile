@@ -7,16 +7,18 @@ MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 
 #####################################################################
 #
+# A Docker image with everything needed to run Moviepy scripts
+# 
 # Image based on Ubuntu:14.04
 #
 #   with
-#     - Python 3.5
-#     - FFMPEG (built)
-#     - ImageMagick and other requirements for moviepy
+#     - Latest Python 3.5
+#     - Latest FFMPEG (built)
+#     - ImageMagick, Numpy, Scipy and other requirements for moviepy
 #
-#   plus a bunch of build/web essentials via wheezy
-#   including MySQL and Postgres clients:
-#      https://github.com/docker-library/docs/tree/master/buildpack-deps
+#   For more on Moviepy, see http://zulko.github.io/moviepy/ 
+#
+#   plus a bunch of build/web essentials
 #
 #####################################################################
 

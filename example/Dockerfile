@@ -1,7 +1,8 @@
 FROM dkarchmervue/moviepy
 
-# https://github.com/ampervue/ffmpeg-moviepy
+# https://github.com/ampervue/docker-ffmpeg-moviepy
 # https://hub.docker.com/r/dkarchmervue/moviepy/
+# Example credits to: 
 
 MAINTAINER David Karchmer <dkarchmer@gmail.com>
 
@@ -13,7 +14,7 @@ MAINTAINER David Karchmer <dkarchmer@gmail.com>
 # docker pull dkarchmervue/moviepy
 #
 # # Get example files and build new image
-# git clone https://github.com/ampervue/ffmpeg-moviepy
+# git clone https://github.com/ampervue/docker-ffmpeg-moviepy
 # cd example
 # docker build -t example .
 #
