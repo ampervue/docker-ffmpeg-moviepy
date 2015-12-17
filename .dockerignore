@@ -7,3 +7,7 @@ spec/*
 .git/
 .bundle*
 .idea/
+*.jpg
+*.mp3
+*.mp4
+*.gif
