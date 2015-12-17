@@ -42,7 +42,7 @@ ADD app /code/app
 # ----------------------------------------
 
 CMD           ["-h"]
-ENTRYPOINT    ["/usr/bin/python", "app/script.py"]
+ENTRYPOINT    ["python", "app/script.py"]
 
 
 
