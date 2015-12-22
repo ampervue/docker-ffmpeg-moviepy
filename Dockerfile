@@ -26,10 +26,9 @@ MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 
 #ENV MOVIEPY_VERSION 0.2.2.11 - Building from source due to issue 237
 ENV NUMPY_VERSION 1.10.2
-# Pillow 3 is not compatible with MoviePy so at least resize does not work
-# But Pillow 3 has to be used with Python 3.5
+# Pillow 3 is not compatible with MoviePy
 # https://github.com/Zulko/moviepy/issues/241
-ENV PILLOW_VERSION 3.0
+ENV PILLOW_VERSION 2.8.1
 ENV SCIPY_VERSION 0.16.1
 
 RUN locale-gen en_US.UTF-8  
