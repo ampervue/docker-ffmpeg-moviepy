@@ -1,6 +1,7 @@
 
 A Docker image running Ubuntu:trusty with latest Python 3.5 and latest FFMPEG (built from source)
 Also installs moviepy and necessary packages (numpy, scipy, ImageMagick, etc.)
+Image based on https://github.com/ampervue/docker-ffmpeg
 
 For more on Moviepy, see http://zulko.github.io/moviepy/ 
 Many thanks to all the contributors of that great project.
