@@ -12,7 +12,7 @@ MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 # Image based on https://github.com/ampervue/docker-ffmpeg
 #
 #   with
-#     - Latest Python 3.5
+#     - Latest Python 3.4
 #     - Latest FFMPEG (built)
 #     - ImageMagick, Numpy, Scipy and other requirements for moviepy
 #
