@@ -25,11 +25,11 @@ MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 #ENV NUM_CORES 4
 
 #ENV MOVIEPY_VERSION 0.2.2.11 - Building from source due to issue 237
-ENV NUMPY_VERSION 1.10.2
+ENV NUMPY_VERSION 1.10.4
 # Pillow 3 is not compatible with MoviePy
 # https://github.com/Zulko/moviepy/issues/241
 ENV PILLOW_VERSION 2.8.1
-ENV SCIPY_VERSION 0.16.1
+ENV SCIPY_VERSION 0.17.0
 
 RUN locale-gen en_US.UTF-8  
 ENV LANG en_US.UTF-8  
@@ -54,7 +54,7 @@ RUN mkdir /usr/local/src
 WORKDIR /usr/local/src
 RUN git clone -q https://github.com/Zulko/moviepy.git
 WORKDIR /usr/local/src/moviepy
-ADD config_defaults.py moviepy/config_defaults.py
+#ADD config_defaults.py moviepy/config_defaults.py
 RUN sudo python setup.py install
 
 # Remove all tmpfile and cleanup
