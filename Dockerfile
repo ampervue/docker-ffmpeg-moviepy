@@ -50,7 +50,7 @@ ENV IMAGEMAGICK_BINARY convert
 # Use PIP when issue fixed. For now, change the defaults
 # manually
 RUN pip install tqdm
-RUN mkdir /usr/local/src
+
 WORKDIR /usr/local/src
 RUN git clone -q https://github.com/Zulko/moviepy.git
 WORKDIR /usr/local/src/moviepy
